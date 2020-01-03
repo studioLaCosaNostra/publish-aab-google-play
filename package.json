@@ -1,0 +1,27 @@
+{
+  "name": "publish-aab-google-play",
+  "version": "1.0.0",
+  "description": "Publish Android App Bundle to Google Play",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "bin": "lib/bin.js",
+  "scripts": {
+    "prepublishOnly": "npm run build",
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/studioLaCosaNostra/publish-aab-google-play.git"
+  },
+  "author": "Studio La Cosa Nostra <studiolacosanostra@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^13.1.2",
+    "typescript": "^3.7.4"
+  },
+  "dependencies": {
+    "commander": "^4.0.1",
+    "googleapis": "^46.0.0"
+  }
+}
