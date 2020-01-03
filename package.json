@@ -1,6 +1,6 @@
 {
   "name": "publish-aab-google-play",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Publish Android App Bundle to Google Play",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -16,6 +16,15 @@
   },
   "author": "Studio La Cosa Nostra <studiolacosanostra@gmail.com>",
   "license": "ISC",
+  "keywords": [
+    "aab",
+    "cli",
+    "google play",
+    "google",
+    "play",
+    "android",
+    "mobile"
+  ],
   "devDependencies": {
     "@types/node": "^13.1.2",
     "typescript": "^3.7.4"
