@@ -18,8 +18,6 @@ const getAndroidPublisher = (
     version: "v3",
     auth: client,
     params: {
-      // default options
-      // this is the package name for your initial app you've already set up on the Play Store
       packageName
     }
   });
@@ -31,7 +29,6 @@ const startEdit = (
   androidPublisher.edits.insert({
     requestBody: {
       id,
-      // this edit will be valid for 10 minutes
       expiryTimeSeconds: "600"
     }
   });

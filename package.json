@@ -1,6 +1,6 @@
 {
   "name": "publish-aab-google-play",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Publish Android App Bundle to Google Play",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
