@@ -1,8 +1,9 @@
 Publish Android App Bundle to Google Play
 
-`$ npm install -g publish-aab-google-play`
-
-`$ publish-aab-google-play --help`
+```bash
+$ npm install -g publish-aab-google-play
+$ publish-aab-google-play --help
+```
 
 ```bash
 Usage: publish-aab-google-play [options]
@@ -20,7 +21,9 @@ Options:
 
 *Example:* 
 
-`publish-aab-google-play -k ./api-publish.json -p com.laCosaNostra.FiveHundredAndTwelve2 -a ./platforms/android/app/build/outputs/bundle/release/app.aab -t beta`
+```bash
+$ publish-aab-google-play -k ./api-publish.json -p com.laCosaNostra.FiveHundredAndTwelve2 -a ./platforms/android/app/build/outputs/bundle/release/app.aab -t beta
+```
 
 **Use in your own program**
 
