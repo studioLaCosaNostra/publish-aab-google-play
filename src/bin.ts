@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 
 import { join } from "path";
-import program from "commander";
-import { publish } from './index';
+import { Command } from "commander";
+const program = new Command();
+import { publish } from "./index";
 
 program
   .description("Publish Android App Bundle to Google Play")
@@ -16,16 +17,18 @@ program
   .option("-e, --exit", "exit on error with error code 1.")
   .parse(process.argv);
 
+const options = program.opts();
+
 publish({
-  keyFile: join(process.cwd(), program.keyFile),
-  packageName: program.packageName,
-  aabFile: join(process.cwd(), program.aabFile),
-  track: program.track
+  keyFile: join(process.cwd(), options.keyFile),
+  packageName: options.packageName,
+  aabFile: join(process.cwd(), options.aabFile),
+  track: options.track,
 })
-.then(() => {
-  console.log('Publish complete.');
-})
-.catch((error: Error) => {
-  console.error(error.message);
-  process.exit(program.exit ? 1 : 0);
-})
+  .then(() => {
+    console.log("Publish complete.");
+  })
+  .catch((error: Error) => {
+    console.error(error.message);
+    process.exit(options.exit ? 1 : 0);
+  });
