@@ -73,11 +73,13 @@ const setTrack = (
 const commit = (
   androidPublisher: ReturnType<typeof getAndroidPublisher>,
   editId: string,
-  packageName: string
+  packageName: string,
+  changesNotSentForReview: boolean
 ) =>
   androidPublisher.edits.commit({
     editId,
-    packageName
+    packageName,
+    changesNotSentForReview
   });
 
 const getAABStream = (filePath: string) => createReadStream(filePath);
@@ -88,13 +90,15 @@ interface SchemaPublish {
   packageName: string;
   aabFile: string;
   track: string;
+  changesNotSentForReview: boolean
 }
 
 export const publish = async ({
   keyFile,
   packageName,
   aabFile,
-  track
+  track,
+  changesNotSentForReview = false,
 }: SchemaPublish) => {
   const client = await getClient(keyFile);
   const stream = getAABStream(aabFile);
@@ -102,7 +106,9 @@ export const publish = async ({
   const id = getId();
   const edit = await startEdit(androidPublisher, id);
   const editId = String(edit.data.id);
+  console.log("Start package upload...")
   const bundle = await upload(androidPublisher, editId, packageName, stream);
+  console.log("Package uploaded")
   if (
     bundle.data.versionCode === undefined ||
     bundle.data.versionCode === null
@@ -116,6 +122,6 @@ export const publish = async ({
     track,
     String(bundle.data.versionCode)
   );
-  await commit(androidPublisher, editId, packageName);
+  await commit(androidPublisher, editId, packageName, changesNotSentForReview);
 };
 

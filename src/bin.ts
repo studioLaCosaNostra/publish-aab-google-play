@@ -14,6 +14,7 @@ program
     "-t, --track <track>",
     "set track (production, beta, alpha...)"
   )
+  .option("-c, --changesNotSentForReview", "Set changesNotSentForReview flag")
   .option("-e, --exit", "exit on error with error code 1.")
   .parse(process.argv);
 
@@ -24,6 +25,7 @@ publish({
   packageName: options.packageName,
   aabFile: join(process.cwd(), options.aabFile),
   track: options.track,
+  changesNotSentForReview: options.changesNotSentForReview,
 })
   .then(() => {
     console.log("Publish complete.");
