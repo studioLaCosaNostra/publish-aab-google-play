@@ -15,6 +15,7 @@ Options:
   -p, --packageName <name>  set package name (com.some.app)
   -a, --aabFile <path>      set path to .aab file
   -t, --track <track>       set track (production, beta, alpha...)
+  -c, --changesNotSentForReview true   set changesNotSentForReview flag
   -e, --exit                exit on error with error code 1.
   -h, --help                output usage information
 ```
@@ -22,7 +23,7 @@ Options:
 *Example:* 
 
 ```bash
-$ publish-aab-google-play -k ./api-publish.json -p com.laCosaNostra.FiveHundredAndTwelve2 -a ./platforms/android/app/build/outputs/bundle/release/app.aab -t beta
+$ publish-aab-google-play -k ./api-publish.json -p com.laCosaNostra.FiveHundredAndTwelve2 -a ./platforms/android/app/build/outputs/bundle/release/app.aab -t beta -c true
 ```
 
 **Use in your own program**
