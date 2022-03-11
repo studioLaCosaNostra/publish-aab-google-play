@@ -106,9 +106,7 @@ export const publish = async ({
   const id = getId();
   const edit = await startEdit(androidPublisher, id);
   const editId = String(edit.data.id);
-  console.log("Start package upload...")
   const bundle = await upload(androidPublisher, editId, packageName, stream);
-  console.log("Package uploaded")
   if (
     bundle.data.versionCode === undefined ||
     bundle.data.versionCode === null
