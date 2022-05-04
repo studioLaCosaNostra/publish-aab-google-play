@@ -53,7 +53,8 @@ const setTrack = (
   editId: string,
   packageName: string,
   track: string,
-  versionCode: string
+  versionCode: string,
+  status: string = "completed"
 ) =>
   androidPublisher.edits.tracks.update({
     editId,
@@ -63,7 +64,7 @@ const setTrack = (
       track: track,
       releases: [
         {
-          status: "completed",
+          status: status,
           versionCodes: [versionCode]
         }
       ]
@@ -74,7 +75,7 @@ const commit = (
   androidPublisher: ReturnType<typeof getAndroidPublisher>,
   editId: string,
   packageName: string,
-  changesNotSentForReview: boolean
+  changesNotSentForReview: boolean,
 ) =>
   androidPublisher.edits.commit({
     editId,
@@ -91,6 +92,7 @@ interface SchemaPublish {
   aabFile: string;
   track: string;
   changesNotSentForReview: boolean
+  status?: string
 }
 
 export const publish = async ({
@@ -99,6 +101,7 @@ export const publish = async ({
   aabFile,
   track,
   changesNotSentForReview = false,
+  status
 }: SchemaPublish) => {
   const client = await getClient(keyFile);
   const stream = getAABStream(aabFile);
@@ -118,7 +121,8 @@ export const publish = async ({
     editId,
     packageName,
     track,
-    String(bundle.data.versionCode)
+    String(bundle.data.versionCode),
+    status
   );
   await commit(androidPublisher, editId, packageName, changesNotSentForReview);
 };

@@ -16,6 +16,7 @@ Options:
   -a, --aabFile <path>      set path to .aab file
   -t, --track <track>       set track (production, beta, alpha...)
   -c, --changesNotSentForReview true   set changesNotSentForReview flag
+  -s  --status              set status at the store i.e draft, completed
   -e, --exit                exit on error with error code 1.
   -h, --help                output usage information
 ```

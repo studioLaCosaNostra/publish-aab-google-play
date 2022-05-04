@@ -15,6 +15,7 @@ program
     "set track (production, beta, alpha...)"
   )
   .option("-c, --changesNotSentForReview", "Set changesNotSentForReview flag")
+  .option("-s, --status", "Set the status at the store")
   .option("-e, --exit", "exit on error with error code 1.")
   .parse(process.argv);
 
@@ -26,6 +27,7 @@ publish({
   aabFile: join(process.cwd(), options.aabFile),
   track: options.track,
   changesNotSentForReview: options.changesNotSentForReview,
+  status: options.status || 'completed'
 })
   .then(() => {
     console.log("Publish complete.");
