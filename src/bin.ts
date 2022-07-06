@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { join } from "path";
+import { resolve } from "path";
 import { Command } from "commander";
 const program = new Command();
 import { publish } from "./index";
@@ -22,9 +22,9 @@ program
 const options = program.opts();
 
 publish({
-  keyFile: join(process.cwd(), options.keyFile),
+  keyFile: resolve(options.keyFile),
   packageName: options.packageName,
-  aabFile: join(process.cwd(), options.aabFile),
+  aabFile: resolve(options.aabFile),
   track: options.track,
   changesNotSentForReview: options.changesNotSentForReview,
   status: options.status || 'completed'
